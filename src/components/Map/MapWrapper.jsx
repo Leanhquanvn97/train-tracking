@@ -1,6 +1,7 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState } from 'react'
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api'
 import TrainMarker from './TrainMarker';
+import TrainInfoWindow from './TrainInfoWindow';
 
 const containerStyle = {
 	height: "800px",
@@ -31,9 +32,6 @@ const MapWrapper = () => {
 
 	const [map, setMap] = React.useState(null);
 	const [selectedTrain, setSelectedTrain] = useState(null);
-	const setSelectedTrainCallback = useCallback((train) => {
-		setSelectedTrain(train);
-	}, []);
 
 	const onLoad = React.useCallback(function callback(map) {
 		const bounds = new window.google.maps.LatLngBounds()
@@ -57,8 +55,11 @@ const MapWrapper = () => {
 				<Marker key={index} position={position} />
 			))}
 			{trainData.map(train => (
-				<TrainMarker train={train} setSelectedTrain={setSelectedTrainCallback} key={train.id}></TrainMarker>
+				<TrainMarker train={train} setSelectedTrain={setSelectedTrain} key={train.id} />
 			))}
+			{selectedTrain && (
+				<TrainInfoWindow selectedTrain={selectedTrain} setSelectedTrain={setSelectedTrain} />
+			)}
 		</GoogleMap>
 	) : (
 		<></>
