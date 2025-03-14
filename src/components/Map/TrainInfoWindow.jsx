@@ -7,10 +7,12 @@ const TrainInfoWindow = ({ selectedTrain, setSelectedTrain }) => {
             position={selectedTrain.position}
             onCloseClick={() => setSelectedTrain(null)}
         >
-            <div>
-                <h3>{selectedTrain.trainNumber}</h3>
+            <div className="text-left leading-relaxed">
+                <h3 className="font-bold">{selectedTrain.trainNumber}</h3>
                 <p>City: {selectedTrain.city}</p>
                 <p>Status: {selectedTrain.delay}</p>
+                <p>Start: {selectedTrain.start}</p>
+                <p>Destination: {selectedTrain.destination}</p>
             </div>
         </InfoWindow>
     )

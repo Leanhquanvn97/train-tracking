@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api'
 import TrainMarker from './TrainMarker';
 import TrainInfoWindow from './TrainInfoWindow';
+import trainData from './mockTrainData.json';
 
 const containerStyle = {
 	height: "800px",
@@ -16,12 +17,6 @@ const markerPositions = [
 	{ lat: 50.9848, lng: 11.0299 },
 	{ lat: 53.5511, lng: 9.9937 },
 ];
-
-const trainData = [
-	{ id: 1, trainNumber: 'ICE 123', city: 'Berlin', delay: 'On Time', position: { lat: 52.5200, lng: 13.4050 } },
-	{ id: 2, trainNumber: 'ICE 456', city: 'Frankfurt', delay: '5 min delay', position: { lat: 50.1109, lng: 8.6821 } },
-	{ id: 3, trainNumber: 'ICE 789', city: 'Hamburg', delay: '10 min delay', position: { lat: 53.1, lng: 9.9937 } },
-]
 
 
 const MapWrapper = () => {

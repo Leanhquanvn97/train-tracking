@@ -1,0 +1,86 @@
+[
+    {
+        "id": 1,
+        "trainNumber": "ICE 123",
+        "city": "Berlin",
+        "delay": "On Time",
+        "start": "Munich",
+        "destination": "Hamburg",
+        "position": {
+            "lat": 52.5200,
+            "lng": 13.4050
+        }
+    },
+    {
+        "id": 2,
+        "trainNumber": "ICE 456",
+        "city": "Frankfurt",
+        "delay": "5 min delay",
+        "start": "Stuttgart",
+        "destination": "Berlin",
+        "position": {
+            "lat": 50.1109,
+            "lng": 8.6821
+        }
+    },
+    {
+        "id": 3,
+        "trainNumber": "ICE 789",
+        "city": "Hamburg",
+        "delay": "10 min delay",
+        "start": "Cologne",
+        "destination": "Munich",
+        "position": {
+            "lat": 53.1,
+            "lng": 9.9937
+        }
+    },
+    {
+        "id": 4,
+        "trainNumber": "ICE 101",
+        "city": "Stuttgart",
+        "delay": "On Time",
+        "start": "Frankfurt",
+        "destination": "Dresden",
+        "position": {
+            "lat": 48.7758,
+            "lng": 9.1829
+        }
+    },
+    {
+        "id": 5,
+        "trainNumber": "ICE 202",
+        "city": "Cologne",
+        "delay": "15 min delay",
+        "start": "Dortmund",
+        "destination": "Leipzig",
+        "position": {
+            "lat": 50.9375,
+            "lng": 6.9603
+        }
+    },
+    {
+        "id": 6,
+        "trainNumber": "ICE 404",
+        "city": "Dresden",
+        "delay": "20 min delay",
+        "start": "Leipzig",
+        "destination": "Frankfurt",
+        "position": {
+            "lat": 51.0504,
+            "lng": 13.7373
+        }
+    },
+    {
+        "id": 7,
+        "trainNumber": "ICE 505",
+        "city": "Leipzig",
+        "delay": "On Time",
+        "start": "Hamburg",
+        "destination": "Cologne",
+        "position": {
+            "lat": 51.3397,
+            "lng": 12.3731
+        }
+    }
+]

@@ -7,7 +7,7 @@ const TrainMarker = ({train, setSelectedTrain}) => {
             position={train.position}
             mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
         >
-            <div className="bg-white w-min rounded border whitespace-nowrap p-1"
+            <div className="bg-white w-min rounded border whitespace-nowrap p-1 rounded-tl-none"
                 onClick={() => setSelectedTrain(train)}
             >
                 <span className="font-bold">{train.trainNumber}</span><br/>
