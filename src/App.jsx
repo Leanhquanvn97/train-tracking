@@ -1,14 +1,15 @@
-import './App.css'
-import MapWrapper from './components/Map/MapWrapper'
+import './App.css';
+import MapWrapper from './components/Map/MapWrapper';
+
 function App() {
 	return (
 		<>
-			<h1 class="text-3xl font-bold underline">
-				Hello world!
+			<h1 className="text-3xl font-bold underline mb-4">
+				Train tracker app!
 			</h1>
 			<MapWrapper></MapWrapper>
 		</>
-	);
-}
+	)
+};
 
-export default App
+export default App;

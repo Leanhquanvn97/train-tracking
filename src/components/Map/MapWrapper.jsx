@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback, memo } from 'react'
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api'
 import TrainMarker from './TrainMarker';
 import TrainInfoWindow from './TrainInfoWindow';
 import trainData from './mockTrainData.json';
 
 const containerStyle = {
-	height: "800px",
-	width: "800px"
+	height: "100%",
+	width: "100%"
 };
 
 const markerPositions = [
@@ -25,10 +25,13 @@ const MapWrapper = () => {
 		googleMapsApiKey: 'AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg',
 	});
 
-	const [map, setMap] = React.useState(null);
+	const [map, setMap] = useState(null);
 	const [selectedTrain, setSelectedTrain] = useState(null);
+	const setSelectedTrainCallback = useCallback((train) => {
+		setSelectedTrain(train);
+	}, []);
 
-	const onLoad = React.useCallback(function callback(map) {
+	const onLoad = useCallback(function callback(map) {
 		const bounds = new window.google.maps.LatLngBounds()
 		markerPositions.forEach((position) => bounds.extend(position))
 		map.fitBounds(bounds)
@@ -36,29 +39,31 @@ const MapWrapper = () => {
 		setMap(map)
 	}, []);
 
-	const onUnmount = React.useCallback(function callback(map) {
+	const onUnmount = useCallback(function callback(map) {
 		setMap(null)
 	}, []);
 
 	return isLoaded ? (
-		<GoogleMap
-			mapContainerStyle={containerStyle}
-			onLoad={onLoad}
-			onUnmount={onUnmount}
-		>
-			{markerPositions.map((position, index) => (
-				<Marker key={index} position={position} />
-			))}
-			{trainData.map(train => (
-				<TrainMarker train={train} setSelectedTrain={setSelectedTrain} key={train.id} />
-			))}
-			{selectedTrain && (
-				<TrainInfoWindow selectedTrain={selectedTrain} setSelectedTrain={setSelectedTrain} />
-			)}
-		</GoogleMap>
+		<div className='h-96 md:h-[800px]'>
+			<GoogleMap
+				mapContainerStyle={containerStyle}
+				onLoad={onLoad}
+				onUnmount={onUnmount}
+			>
+				{markerPositions.map((position, index) => (
+					<Marker key={index} position={position} />
+				))}
+				{trainData.map(train => (
+					<TrainMarker train={train} setSelectedTrain={setSelectedTrainCallback} key={train.id} />
+				))}
+				{selectedTrain && (
+					<TrainInfoWindow selectedTrain={selectedTrain} setSelectedTrain={setSelectedTrainCallback} />
+				)}
+			</GoogleMap>
+		</div>
 	) : (
 		<></>
 	);
 }
 
-export default React.memo(MapWrapper);
+export default memo(MapWrapper);
